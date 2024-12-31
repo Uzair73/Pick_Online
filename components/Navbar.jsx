@@ -3,7 +3,7 @@ import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 
 const Navbar = () => {
   return (
-    <nav className='container-fluid'>
+    <nav className='container-fluid border-b border-black'>
       <div className="flex justify-center w-full h-14 bg-black py-4 text-white">
         Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
         <button className='font-bold mx-3'>Shop Now</button>
