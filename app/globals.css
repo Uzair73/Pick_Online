@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -18,4 +18,20 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+.pic-ani{
+  transform: translateX(0);
+  animation: float 6s ease-out infinite;
+}
+@keyframes float{
+  0%{
+    transform: translateY(0px)
+  }
+  50%{
+    transform: translateY(-20px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
 }

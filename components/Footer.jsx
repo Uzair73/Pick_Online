@@ -1,54 +1,84 @@
-import Link from 'next/link';
-import React from 'react'
-import { MdSend } from 'react-icons/md';
+import Link from "next/link";
+import React from "react";
+import { MdSend } from "react-icons/md";
+
 const Footer = () => {
   return (
-    <>
-    <div className='bg-black'>
-    <div className="container-fluid flex h-full w-full gap-40 px-8">
-      <div className="box flex flex-col justify-start p-4 text-white gap-3">
-        <h2 className="font-bold text-3xl self-start">Exclusive</h2>
-        <p>Subscribe</p>
-        <p>Get 10% Off your first order</p>
-        <div className="flex mt-2 items-center bg-black">
-          <input type="text" placeholder='Enter your email' className="flex-1 p-2 bg-black text-white placeholder-gray-500" />
-          <button className="-mx-8">
-            <MdSend className="text-white text-3xl"/>
-          </button>
+    <footer className="bg-black text-white">
+      {/* Main Footer Section */}
+      <div className="container mx-auto px-8 py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Newsletter Section */}
+        <div className="flex flex-col gap-4">
+          <h2 className="text-3xl font-bold">Exclusive</h2>
+          <p>Subscribe</p>
+          <p>Get 10% Off your first order</p>
+          <div className="flex items-center border border-gray-500 rounded-lg overflow-hidden">
+            <input
+              type="text"
+              placeholder="Enter your email"
+              className="flex-1 p-2 bg-black text-white placeholder-gray-500 focus:outline-none"
+            />
+            <button className="p-2 bg-gray-700 hover:bg-gray-600">
+              <MdSend className="text-2xl" />
+            </button>
+          </div>
+        </div>
+
+        {/* Support Section */}
+        <div className="flex flex-col gap-2">
+          <p className="text-xl font-bold">Support</p>
+          <p>1234 North Street, Suite 100</p>
+          <p>City, State, 56789</p>
+          <p>exclusive@gmail.com</p>
+          <p>(123) 456-7890</p>
+        </div>
+
+        {/* Account Links Section */}
+        <div className="flex flex-col gap-2">
+          <p className="text-xl font-bold">Account</p>
+          <Link href="#" className="hover:text-gray-400">
+            My Account
+          </Link>
+          <Link href="/login" className="hover:text-gray-400">
+            Login/Signup
+          </Link>
+          <Link href="/cart" className="hover:text-gray-400">
+            Cart
+          </Link>
+          <Link href="/wishlist" className="hover:text-gray-400">
+            Wishlist
+          </Link>
+          <Link href="/shop" className="hover:text-gray-400">
+            Shop
+          </Link>
+        </div>
+
+        {/* Quick Links Section */}
+        <div className="flex flex-col gap-2">
+          <p className="text-xl font-bold">Quick Link</p>
+          <Link href="/privacy-policy" className="hover:text-gray-400">
+            Privacy Policy
+          </Link>
+          <Link href="/terms-of-use" className="hover:text-gray-400">
+            Terms of Use
+          </Link>
+          <Link href="/faq" className="hover:text-gray-400">
+            FAQ
+          </Link>
+          <Link href="/contact" className="hover:text-gray-400">
+            Contact
+          </Link>
         </div>
       </div>
 
-      <div className="box flex flex-col justify-start p-4 text-white gap-3">
-        <p className="font-bold text-xl self-start">Support</p>
-        <p>1234 North Street, Suite 100</p>
-        <p>City, State, 56789</p>
-        <p>exclusive@gmail.com</p>
-        <p>(123) 456-7890</p>
+      {/* Footer Bottom Section */}
+      <div className="border-t border-gray-700 py-4">
+        <p className="text-center text-gray-500 text-sm">
+          &copy; {new Date().getFullYear()} Exclusive. All rights reserved.
+        </p>
       </div>
+    </footer>
+  );
+};
 
-      <div className="box flex flex-col justify-start p-4 text-white gap-3">
-        <p className="font-bold text-xl self-start">Account</p>
-        <Link href={'#'}>My Account</Link>
-        <Link href={'/login'}>Login/Signup</Link>
-        <Link href={'/cart'}>Cart</Link>
-        <Link href={'/wishlist'}>Wishlist</Link>
-        <Link href={'/shop'}>Shop</Link>
-      </div>
-
-      <div className="box flex flex-col justify-start p-4 text-white gap-3">
-        <p className="font-bold text-xl self-start">Quick Link</p>
-        <Link href={'/privacy-policy'}>Privacy Policy</Link>
-        <Link href={'/terms-of-use'}>Terms of Use</Link>
-        <Link href={'/faq'}>FAQ</Link>
-        <Link href={'/contact'}>Contact</Link>
-      </div>
-    </div>
-    <div className="box p-4 text-gray-500 w-full flex justify-center">
-      <p>&copy; {new Date().getFullYear()} Exclusive. All rights reserved.</p>
-    </div>
-    </div>
-    </>
-  )
-}
-
-export default Footer
+export default Footer;
