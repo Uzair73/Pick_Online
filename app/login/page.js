@@ -24,7 +24,7 @@ const Login = () => {
               <input type="password" id="password" name="password" required className="mt-1 p-2 block w-full sm:text-sm border-b-2 border-gray-300 focus:border-none focus:ring-0" placeholder="Password" />
             </div>
             <div className="flex items-center justify-between">
-              <Button btn_text={"Login"} classname={`bg-btn_color text-white rounded-md px-11 py-2`}/>
+              <Button btn_text={"Login"} classname={`bg-btn_color text-white rounded-md px-11 py-3`}/>
                 <div className="text-sm mx-12">
                   <a href="#" className="font-medium text-red-600"> Forgot your password? </a>
                 </div>

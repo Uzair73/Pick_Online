@@ -462,7 +462,7 @@ export default function Home() {
             </div>
           </section>
           {/* support menu */}
-          <SupprtMenu />
+          <SupprtMenu classname={'maincontainer flex justify-between mx-20 my-10'}/>
         </div>
       </div>
     </>

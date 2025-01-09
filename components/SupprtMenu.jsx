@@ -1,11 +1,11 @@
 import React from 'react'
 
-const SupprtMenu = () => {
+const SupprtMenu = ({classname}) => {
   return (
     <>
     <menu>
         <section>
-            <div className="maincontainer flex justify-between mx-20 my-10">
+            <div className={classname}>
                 <div className="box flex flex-col justify-center text-center items-center gap-2">
                     <div className="container bg-[#C1C0C1] rounded-[50%] py-4 px-4 w-20">
                     <img src="/icon-delivery.svg" alt="delivery-img" className='h-12 mx-auto bg-black rounded-[50%] px-1'/>
