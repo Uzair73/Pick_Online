@@ -10,7 +10,7 @@ import 'swiper/css/free-mode';
 import { Autoplay, FreeMode ,  Pagination } from 'swiper/modules';
 import MetaData from '@/components/MetaData';
 
-const page = () => {
+const About = () => {
   return (
     <>
     <MetaData title="About Us - Pick Online - Discover Our Story and Values" description="Learn about the journey of Pick Online, our commitment to customer satisfaction, and how we're shaping the future of online shopping."/>
@@ -259,4 +259,4 @@ const page = () => {
 //   description: "Learn about the journey of Pick Online, our commitment to customer satisfaction, and how we're shaping the future of online shopping.",
 // };
 
-export default page;
+export default About;

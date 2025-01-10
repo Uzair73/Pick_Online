@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 
@@ -11,10 +12,10 @@ const Navbar = () => {
       <div className='flex justify-between mx-10 my-5 items-center'>
         <span className='font-bold text-2xl'>Exclusive</span>
         <ul className='flex gap-4 mx-20'>
-          <li className='cursor-pointer'>Home</li>
-          <li className='cursor-pointer'>Contact</li>
-          <li className='cursor-pointer'>About</li>
-          <li className='cursor-pointer'>Signup</li>
+          <Link href={"/"}><li className='cursor-pointer'>Home</li></Link>
+          <Link href={"/contact"}><li className='cursor-pointer'>Contact</li></Link>
+          <Link href={"/about"}><li className='cursor-pointer'>About</li></Link>
+          <Link href={"/signup"}><li className='cursor-pointer'>Signup</li></Link>
         </ul>
         <div className='flex items-center'>
           <input className='px-4 py-2 rounded-lg' type="search" placeholder='What are you looking for?'/>
