@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { My_Provider } from "@/redux/provider";
 
 
 export const metadata = {
@@ -13,7 +14,9 @@ export default function RootLayout({ children }) {
      <html lang="en" className="h-full">
       <body>
         <Navbar />
-        <main className="flex-1 mx-10">{children}</main>
+        <main className="flex-1 mx-10">
+          <My_Provider>{children}</My_Provider>
+          </main>
         <Footer />
       </body>
     </html>
