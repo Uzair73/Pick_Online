@@ -19,6 +19,7 @@ import SupprtMenu from "@/components/SupprtMenu";
 // redux hooks
 import { useDispatch } from "react-redux";
 import { addItem } from "@/redux/features/wishlist_slice";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -28,7 +29,7 @@ export default function Home() {
   const dispatch = useDispatch()
 
   // contdown time
-  const dealEndTime = new Date('2025-01-10T13:59:59').getTime();
+  const dealEndTime = new Date('2025-01-15T13:59:59').getTime();
 
   return (
     <>
@@ -117,6 +118,7 @@ export default function Home() {
                     {products.slice(0, 4).map((product, index) => {
                       return (
                         <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full mx-4 my-5">
+                          <Link href={`/product/${product.id}`}>
                           <div className="container bg-[#F5F5F5] group">
                             <div className="flex justify-between items-center py-3">
                               <DiscountBar classname={"mx-3"} discountedPrice={product.discountPercentage} />
@@ -129,6 +131,7 @@ export default function Home() {
                               </div>
                             </div>
                           </div>
+                          </Link>
                           <div className="mt-4">
                             <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{product.category}</h3>
                             <h2 className="text-gray-900 title-font text-lg font-medium">{product.title}</h2>

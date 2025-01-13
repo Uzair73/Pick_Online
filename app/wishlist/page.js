@@ -5,6 +5,7 @@ import Image from 'next/image';
 import DiscountBar from '@/components/DiscountBar';
 import Button from '@/components/Button';
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaCartShopping } from "react-icons/fa6";
 import { removeItem } from '@/redux/features/wishlist_slice';
 
 const WishlistCard = () => {
@@ -31,13 +32,16 @@ const WishlistCard = () => {
                 <div key={item.id} className="p-4 w-fit">
                   <div className="container bg-[#F5F5F5] group">
                             <div className="flex justify-between items-center py-3 px-2">
-                              <DiscountBar classname={"mx-3"} discountedPrice={item.discountPercentage} />
+                              {/* <DiscountBar classname={"mx-3"} discountedPrice={item.discountPercentage} /> */}
                               <RiDeleteBin6Line onClick={()=> handleRemoveItem(item.id)} className='bg-white rounded-[50%] text-4xl cursor-pointer p-2 border border-gray-300'/>
                             </div>
                             <div className="relative flex justify-center py-4">
                               <Image alt={item.imageAlt} className="object-cover object-center block px-6 group-hover:opacity-80" width={200} height={300} src={item.imageSrc} />
                               <div className="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100">
-                                <Button classname={'bg-black py-2 w-full text-white font-bold'} btn_text={'Add to Card'} />
+                                 <div className="bg-black text-white flex justify-center items-center w-full p-2 rounded-sm cursor-pointer">
+                                    <FaCartShopping className='text-xl mx-2'/>
+                                    <Button classname={'text-white font-semibold'} btn_text={'Add to Cart'} />
+                                 </div>
                               </div>
                             </div>
                           </div>
