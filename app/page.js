@@ -19,6 +19,7 @@ import SupprtMenu from "@/components/SupprtMenu";
 // redux hooks
 import { useDispatch } from "react-redux";
 import { addItem } from "@/redux/features/wishlist_slice";
+import { add_to_cart } from "@/redux/features/product_card";
 import Link from "next/link";
 
 
@@ -31,6 +32,14 @@ export default function Home() {
   // contdown time
   const dealEndTime = new Date('2025-01-15T13:59:59').getTime();
 
+
+  // add to cart function
+  const handleAddToCart = (product) => {
+    // Dispatch an action to add the product to the cart
+    dispatch(add_to_cart(product));
+    console.log('Product added to cart:', product);
+  };
+  
   return (
     <>
       <div className="flex">
@@ -118,7 +127,7 @@ export default function Home() {
                     {products.slice(0, 4).map((product, index) => {
                       return (
                         <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full mx-4 my-5">
-                          <Link href={`/product/${product.id}`}>
+                          {/* <Link href={`/product/${product.id}`}> */}
                           <div className="container bg-[#F5F5F5] group">
                             <div className="flex justify-between items-center py-3">
                               <DiscountBar classname={"mx-3"} discountedPrice={product.discountPercentage} />
@@ -127,11 +136,11 @@ export default function Home() {
                             <div className="relative flex justify-center py-4">
                               <Image alt={product.imageAlt} className="object-cover object-center block px-6 group-hover:opacity-80" width={300} height={300} src={product.imageSrc} />
                               <div className="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100">
-                                <Button classname={'bg-black py-2 w-full text-white font-bold'} btn_text={'Add to Card'} />
+                                <Button onClick={() => handleAddToCart(product)} classname={'bg-black py-2 w-full text-white font-bold'} btn_text={'Add to Card'} />
                               </div>
                             </div>
                           </div>
-                          </Link>
+                          {/* </Link> */}
                           <div className="mt-4">
                             <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{product.category}</h3>
                             <h2 className="text-gray-900 title-font text-lg font-medium">{product.title}</h2>
