@@ -5,6 +5,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ImCross } from "react-icons/im";
+import Link from "next/link";
 
 const ProductCard = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ const ProductCard = () => {
 
 
   const totalAfterDiscount = useSelector((state) => state.cart.totalAfterDiscount);
+  const Valid_coupon_codes = useSelector((state) => state.cart.valid_coupon);
+  
   const [couponCode, setCouponCode] = useState("");
 
   // Handle quantity change for a product
@@ -55,11 +58,11 @@ const [localcart, set_local_cart] = useState(cart_item)
 
   // coupon code functionality
   const handleApplyCoupon = () => {
-    if (couponCode.trim() === "") {
-      alert("Please enter a valid coupon code.");
-      return;
+    if (couponCode.trim() === ""){
+      return alert("Please enter a valid coupon code.");
+    } else {
+      dispatch(apply_coupon({ coupon_code: couponCode }));
     }
-    dispatch(apply_coupon({ coupon_code: couponCode }));
   };
 
   return (
@@ -87,14 +90,14 @@ const [localcart, set_local_cart] = useState(cart_item)
                 >
                   <td className="p-4 flex items-center gap-4">
                     <div className="flex">
-                    <ImCross onClick={() => handle_remove_item(item.id)} className="text-3xl p-2 relative left-3 top-[-1.3rem] cursor-pointer text-white rounded-[50%] bg-red-500"/>
+                    <ImCross onClick={() => handle_remove_item(item.id)} className="text-xl my-2 p-1 relative left-3 top-[-1.3rem] cursor-pointer text-white rounded-[50%] bg-red-500"/>
                     <Image
                       src={item.imageSrc}
                       alt={'img'}
-                      width={80}
+                      width={100}
                       height={80}
                       objectFit="cover"
-                      className=""
+                      className="p-2"
                     />
                     </div>
                     <span className="text-gray-800 font-medium">
@@ -109,8 +112,7 @@ const [localcart, set_local_cart] = useState(cart_item)
                       onChange={(e) =>
                         handleQuantityChange(item.id, e.target.value)
                       }
-                      min="1"
-                      max="10"
+                      min="0"
                       className="border border-gray-300 rounded px-3 py-1 w-16 text-center focus:ring focus:ring-blue-200"
                     />
                   </td>
@@ -122,12 +124,14 @@ const [localcart, set_local_cart] = useState(cart_item)
             </tbody>
           </table>
           <div className="flex justify-between items-center">
+          <Link href={'/'}>
             <Button
               btn_text={"Return To Shop"}
               classname={
                 "p-11 py-3 border border-black rounded-sm font-semibold"
               }
             />
+            </Link>
             <Button
               btn_text={"Update Cart"}
               onClick={update_Cart}
@@ -150,7 +154,7 @@ const [localcart, set_local_cart] = useState(cart_item)
               classname={"px-11 py-3 bg-btn_color text-white rounded-md"}
             />
           </div>
-          <div className="flex justify-end mt-[-6rem]">
+          <div className="flex justify-end mt-[-2rem]">
             <div className="w-full md:w-1/3 border-2 border-black rounded p-4">
               <h2 className="text-xl font-semibold mb-4">Cart Total</h2>
               <div className="flex justify-between py-3 mb-2 border-b border-black">
