@@ -174,10 +174,12 @@ const [localcart, set_local_cart] = useState(cart_item)
                 <span>${totalAfterDiscount ? totalAfterDiscount.toFixed() : 0}</span> {/* Use totalAfterDiscount from the state */}
               </div>
               <div className="flex justify-center items-center">
+                <Link href={'/checkout'}>
                 <Button
                   btn_text={"Proceed to checkout"}
                   classname="px-7 py-2 bg-btn_color text-white rounded hover:bg-red-600"
                 />
+                </Link>
               </div>
             </div>
           </div>
