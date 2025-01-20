@@ -1,8 +1,15 @@
+"use client"
 import Link from 'next/link';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+  const access_token = useSelector((state)=>state.auth_token.access_token)
+  // if(!access_token){
+  //   return <div>Not logged in</div>;
+  // }
+
   return (
     <nav className='container-fluid border-b border-black'>
       <div className="flex justify-center w-full h-14 bg-black py-4 text-white">
@@ -19,8 +26,15 @@ const Navbar = () => {
         </ul>
         <div className='flex items-center'>
           <input className='px-4 py-2 rounded-lg' type="search" placeholder='What are you looking for?'/>
-          <FaHeart className='mx-3 cursor-pointer' />
-          <FaShoppingCart className='cursor-pointer' />
+          {access_token ? (
+            <>
+              <FaHeart className='mx-3 cursor-pointer' />
+              <FaShoppingCart className='cursor-pointer' />
+            </>
+          ) : (
+            <>
+            </>
+          )}
         </div>
       </div>
     </nav>
