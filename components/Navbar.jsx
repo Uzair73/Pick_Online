@@ -57,7 +57,7 @@ const Navbar = () => {
                 </Link>
               </div>
               <div className="relative flex item-center">
-                <Link href={'/card'}>
+                <Link href={'/cart'}>
                   <Badge badgeContent={cart_item.length} color="error" max={99}>
                     <MdOutlineShoppingCart className='mx-3 cursor-pointer text-2xl' />
                   </Badge>
