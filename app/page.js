@@ -16,15 +16,30 @@ import Button from "@/components/Button";
 import CountDown from "@/components/CountDown";
 import SupprtMenu from "@/components/SupprtMenu";
 
+// redux hooks
+import { useDispatch } from "react-redux";
+import { addItem } from "@/redux/features/wishlist_slice";
+import { add_to_cart } from "@/redux/features/product_card";
+import Link from "next/link";
+
 
 export default function Home() {
   console.log({ dummy_data: flash_card, category_data: categoryData });
   const [products, setProducts] = useState(flash_card);
   const [category, setcategory] = useState(categoryData);
+  const dispatch = useDispatch()
 
   // contdown time
-  const dealEndTime = new Date('2025-01-10T13:59:59').getTime();
+  const dealEndTime = new Date('2025-01-15T13:59:59').getTime();
 
+
+  // add to cart function
+  const handleAddToCart = (product) => {
+    // Dispatch an action to add the product to the cart
+    dispatch(add_to_cart(product));
+    console.log('Product added to cart:', product);
+  };
+  
   return (
     <>
       <div className="flex">
@@ -111,19 +126,21 @@ export default function Home() {
                   <div className="flex my-3 w-[93vw] overflow-hidden">
                     {products.slice(0, 4).map((product, index) => {
                       return (
-                        <div key={index.id} className="lg:w-1/4 md:w-1/2 p-4 w-full mx-4 my-5">
+                        <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full mx-4 my-5">
+                          {/* <Link href={`/product/${product.id}`}> */}
                           <div className="container bg-[#F5F5F5] group">
                             <div className="flex justify-between items-center py-3">
                               <DiscountBar classname={"mx-3"} discountedPrice={product.discountPercentage} />
-                              <FaHeart className='mx-3 cursor-pointer text-black bg-white rounded-lg' />
+                              <FaHeart onClick={()=>dispatch(addItem(product))} className='mx-3 cursor-pointer text-black bg-white rounded-lg' />
                             </div>
                             <div className="relative flex justify-center py-4">
                               <Image alt={product.imageAlt} className="object-cover object-center block px-6 group-hover:opacity-80" width={300} height={300} src={product.imageSrc} />
                               <div className="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100">
-                                <Button classname={'bg-black py-2 w-full text-white font-bold'} btn_text={'Add to Card'} />
+                                <Button onClick={() => handleAddToCart(product)} classname={'bg-black py-2 w-full text-white font-bold'} btn_text={'Add to Card'} />
                               </div>
                             </div>
                           </div>
+                          {/* </Link> */}
                           <div className="mt-4">
                             <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{product.category}</h3>
                             <h2 className="text-gray-900 title-font text-lg font-medium">{product.title}</h2>
@@ -196,7 +213,7 @@ export default function Home() {
                   <div className="flex my-3 w-[93vw] overflow-hidden">
                     {category.slice(0, 4).map((product, index) => {
                       return (
-                        <div key={index.id} className="lg:w-1/4 md:w-1/2 p-4 w-full mx-4 my-5">
+                        <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full mx-4 my-5">
                           <div className="container border-2 border-[#c2c0c0] text-black hover:bg-[#DB4444] hover:text-white cursor-pointer w-[70%] h-32 rounded-lg group">
                             <div className="relative flex justify-center py-4">
                               <Image alt={product.imageAlt} className="object-cover object-center block px-6 group-hover:opacity-80" width={100} height={100} src={product.imageSrc} />
@@ -230,7 +247,7 @@ export default function Home() {
                   <div className="flex my-3 w-[93vw] overflow-hidden">
                     {products.slice(0, 4).map((product, index) => {
                       return (
-                        <div key={index.id} className="lg:w-1/4 md:w-1/2 p-4 w-full mx-4 my-5">
+                        <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full mx-4 my-5">
                           <div className="container bg-[#F5F5F5] group">
                             <div className="flex justify-between items-center py-3">
                               <DiscountBar classname={"mx-3"} discountedPrice={product.discountPercentage} />
@@ -330,7 +347,7 @@ export default function Home() {
                   <div className="flex my-3 w-[93vw] overflow-hidden">
                     {products.slice(0, 4).map((product, index) => {
                       return (
-                        <div key={index.id} className="lg:w-1/4 md:w-1/2 p-4 w-full mx-4 my-5">
+                        <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full mx-4 my-5">
                           <div className="container bg-[#F5F5F5] group">
                             <div className="flex justify-between items-center py-3">
                               <DiscountBar classname={"mx-3"} discountedPrice={product.discountPercentage} />
